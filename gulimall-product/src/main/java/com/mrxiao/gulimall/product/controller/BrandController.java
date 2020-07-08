@@ -2,9 +2,13 @@ package com.mrxiao.gulimall.product.controller;
 
 import com.mrxiao.common.utils.PageUtils;
 import com.mrxiao.common.utils.R;
+import com.mrxiao.common.valid.AddGroup;
+import com.mrxiao.common.valid.UpdateGroup;
+import com.mrxiao.common.valid.UpdateStatusGroup;
 import com.mrxiao.gulimall.product.entity.BrandEntity;
 import com.mrxiao.gulimall.product.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -43,7 +47,7 @@ public class BrandController {
     @RequestMapping("/info/{brandId}")
 //    //@RequiresPermissions("product:brand:info")
     public R info(@PathVariable("brandId") Long brandId){
-		BrandEntity brand = brandService.getById(brandId);
+        BrandEntity brand = brandService.getById(brandId);
 
         return R.ok().put("brand", brand);
     }
@@ -53,9 +57,19 @@ public class BrandController {
      */
     @RequestMapping("/save")
 //    //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
-
+    public R save(@Validated(value = AddGroup.class) @RequestBody BrandEntity brand){
+//        if(result.hasErrors())
+//        {
+//            Map<String,Object> map=new HashMap<>();
+//            result.getFieldErrors().forEach((item)->{
+//                String message= item.getDefaultMessage();
+//                String field = item.getField();
+//                map.put(field,message);
+//            });
+//            return R.error(400,"提交的数据不合法").put("data",map);
+//        }else {
+            brandService.save(brand);
+//        }
         return R.ok();
     }
 
@@ -64,8 +78,19 @@ public class BrandController {
      */
     @RequestMapping("/update")
 //    //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
+    public R update(@Validated(value = UpdateGroup.class) @RequestBody BrandEntity brand){
+        brandService.updateById(brand);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改状态
+     */
+    @RequestMapping("/update/status")
+    //@RequiresPermissions("product:brand:update")
+    public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody BrandEntity brand){
+        brandService.updateById(brand);
 
         return R.ok();
     }
@@ -76,7 +101,7 @@ public class BrandController {
     @RequestMapping("/delete")
     //@RequiresPermissions("product:brand:delete")
     public R delete(@RequestBody Long[] brandIds){
-		brandService.removeByIds(Arrays.asList(brandIds));
+        brandService.removeByIds(Arrays.asList(brandIds));
 
         return R.ok();
     }
