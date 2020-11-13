@@ -3,7 +3,9 @@ package com.mrxiao.gulimall.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 1、整合MyBatis-Plus
@@ -51,10 +53,46 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @ControllerAdvice
  *  1）、编写异常处理类，使用@ControllerAdvice。
  *  2）、使用@ExceptionHandler标注方法可以处理的异常。
+ *
+ * 5.模板引擎
+ * 1）、thymeleaf-starter:关闭缓存
+ * 2)、静态资源都放在static文件夹下就可以按照路径直接访问
+ * 3）、页面放在thymeleafs下，直接访问
+ * 4）、页面修改不重启服务器实施更新
+ *   1）、引入boot-devtools
+ *
+ * 6、整合redis
+ *  1)、引入starter-data-redis
+ *  2)、简单配置redis的host信息
+ *  3)、使用springboot自动配置的redisTemplate来操作redis
+ * 7.整合redisson作为分布式锁
+ *  1).引入依赖
+ *  2).配置redisson
+ *
+ *  8.整合springCache简化缓存开发
+ *   1)、引入依赖 spring-boot-starter-cache spring-boot-starter-data-redis
+ *   2)、写配置
+ *     1.自动配置了哪些
+ *     CacheAutoConfiguration 会导入RedisCacheAutoConfiguration
+ *     自动配置好缓存管理器RedisCacheManager
+ *
+ *   3)、测试使用缓存
+ *     ：触发将数据保存的缓存的操作
+ *     ：触发将数据保存的删除的操作
+ *     ：不影响方法执行更新
+ *     ：组合以上多个操作
+ *     :在类级别共享缓存的相同的操作
+ *
+ *   1.开启缓存功能 @EnableCaching
+ *   2. 只需要使用注解就能完成缓存操作
+ *
+ * 4)、 CacheAutoConfiguration->  RedisCacheConfiguration ->RedisCacheManager
  */
+@EnableCaching
 @SpringBootApplication
 @MapperScan("com.mrxiao.gulimall.product.dao")
 @EnableDiscoveryClient
+@EnableFeignClients(basePackages = "com.mrxiao.gulimall.product.feign")
 public class GulimallProductApplication {
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.mrxiao.gulimall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mrxiao.common.utils.PageUtils;
 import com.mrxiao.gulimall.product.entity.CategoryEntity;
+import com.mrxiao.gulimall.product.vo.Catelog2Vo;
 
 import java.util.List;
 import java.util.Map;
@@ -22,5 +23,19 @@ public interface CategoryService extends IService<CategoryEntity> {
     List<CategoryEntity> listWithTree();
 
     void removeMenuByIds(List<Long> asList);
+
+    /**
+     * 找到catelogId的完整路径
+     * @param catelogId
+     * @return
+     */
+    Long[] findCatelogPath(Long catelogId);
+
+    void updateCasecade(CategoryEntity category);
+
+    List<CategoryEntity> getLevel1Categorys();
+
+    Map<String, List<Catelog2Vo>> getCategoryJson();
+
 }
 
