@@ -8,6 +8,7 @@ import com.mrxiao.common.utils.Query;
 import com.mrxiao.gulimall.product.dao.SkuInfoDao;
 import com.mrxiao.gulimall.product.entity.SkuInfoEntity;
 import com.mrxiao.gulimall.product.service.SkuInfoService;
+import com.mrxiao.gulimall.product.vo.SkuItemVo;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -95,6 +96,25 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     public List<SkuInfoEntity> getSkuBySpuId(Long spuId) {
         List<SkuInfoEntity> spuList = this.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id", spuId));
         return spuList;
+    }
+
+    @Override
+    public SkuItemVo item(Long skuId) {
+        SkuItemVo skuItemVo = new SkuItemVo();
+
+        //1.sku基本信息
+
+
+        //2.sku图片信息
+
+        //3.获取spu的销售属性组合
+
+        //4.获取spu的介绍
+
+        //5.获取spu规格参数信息
+
+
+        return null;
     }
 
 }

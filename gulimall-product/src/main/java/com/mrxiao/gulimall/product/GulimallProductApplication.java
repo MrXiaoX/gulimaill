@@ -3,7 +3,6 @@ package com.mrxiao.gulimall.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -77,18 +76,18 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *     自动配置好缓存管理器RedisCacheManager
  *
  *   3)、测试使用缓存
- *     ：触发将数据保存的缓存的操作
- *     ：触发将数据保存的删除的操作
- *     ：不影响方法执行更新
- *     ：组合以上多个操作
- *     :在类级别共享缓存的相同的操作
+ *  @Cacheable：触发将数据保存的缓存的操作
+ *  @CacheEvict：触发将数据保存的删除的操作
+ *  @CachePut：不影响方法执行更新
+ *  @Caching：组合以上多个操作
+ *  @CacheConfig:在类级别共享缓存的相同的操作
  *
- *   1.开启缓存功能 @EnableCaching
- *   2. 只需要使用注解就能完成缓存操作
+ *   (1).开启缓存功能 @EnableCaching
+ *   (2). 只需要使用注解就能完成缓存操作
  *
- * 4)、 CacheAutoConfiguration->  RedisCacheConfiguration ->RedisCacheManager
+ *
+ * 4)、自定义缓存原理 CacheAutoConfiguration->  RedisCacheConfiguration ->RedisCacheManager
  */
-@EnableCaching
 @SpringBootApplication
 @MapperScan("com.mrxiao.gulimall.product.dao")
 @EnableDiscoveryClient

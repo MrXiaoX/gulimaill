@@ -40,4 +40,5 @@ public class AttrAttrgroupRelationServiceImpl extends ServiceImpl<AttrAttrgroupR
         this.saveBatch(collect);
     }
 
+
 }

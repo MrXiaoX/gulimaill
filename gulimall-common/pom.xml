@@ -113,6 +113,21 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
+       <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+           <version>1.2.62</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <!--<dependency>
+           <groupId>org.eclipse.jetty</groupId>
+           <artifactId>jetty-util</artifactId>
+       </dependency>
+           -->
     </dependencies>
 
     <dependencyManagement>

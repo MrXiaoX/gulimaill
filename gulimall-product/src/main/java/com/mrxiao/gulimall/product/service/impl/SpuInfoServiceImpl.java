@@ -311,10 +311,30 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             /**
              *
              * 1、构造请求数据，将对象转为json
-             *
+             *  RequestTemplate template = buildTemplateFromArgs.create(argv);
              * 2、发送请求进行执行（执行成功会解码响应数据）
-             *
+             *  return executeAndDecode(template, options);
              * 3、执行请求会有重试机制
+             * while (true) {
+             *       try {
+             *         return executeAndDecode(template, options);
+             *       } catch (RetryableException e) {
+             *         try {
+             *           retryer.continueOrPropagate(e);
+             *         } catch (RetryableException th) {
+             *           Throwable cause = th.getCause();
+             *           if (propagationPolicy == UNWRAP && cause != null) {
+             *             throw cause;
+             *           } else {
+             *             throw th;
+             *           }
+             *         }
+             *         if (logLevel != Logger.Level.NONE) {
+             *           logger.logRetry(metadata.configKey(), logLevel);
+             *         }
+             *         continue;
+             *       }
+             *     }
              */
         }
     }

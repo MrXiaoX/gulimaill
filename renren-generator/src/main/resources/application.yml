@@ -7,9 +7,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.107.120.118:3306/cardcloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.107.120.118:3306/cardlan_ad?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: gXMDc6WTK0J3yjawP/kC4TjF4
+    password: MIOc6WTK0J3yja$$kC4TjF4
     #oracle配置
     #    driverClassName: oracle.jdbc.OracleDriver
     #    url: jdbc:oracle:thin:@47.100.206.162:1521:xe
@@ -45,12 +45,16 @@ spring:
 
 mybatis-plus:
   mapperLocations: classpath:mapper/**/*.xml
-
+  global-config:
+    db-config:
+      table-underline: false
+      capital-mode: false
 
 pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
 
 
 #指定数据库，可选值有【mysql、oracle、sqlserver、postgresql、mongodb】

@@ -5,8 +5,14 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://172.0.9.106:3306/gulimall_oms
+    url: jdbc:mysql://172.0.13.242:3306/gulimall_pms?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  rabbitmq:
+    host: 172.0.9.109
+    port: 5672
+    virtual-host: /
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

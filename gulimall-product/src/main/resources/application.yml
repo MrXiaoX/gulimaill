@@ -17,7 +17,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 
   thymeleaf:
-    cache: true
+    cache: false
   redis:
     database: 10             # Redis数据库索引（默认为0）
     host: 47.107.120.118         # Redis服务器地址

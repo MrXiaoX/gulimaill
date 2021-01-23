@@ -23,8 +23,7 @@ class GulimallProductApplicationTests {
     @Autowired
     CategoryService categoryService;
 
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
+
 
     @Autowired
     RedissonClient redissonClient;
@@ -33,6 +32,9 @@ class GulimallProductApplicationTests {
     public void testStringRedisson(){
         System.out.println(redissonClient);
     }
+
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     @Test
     public void testStringRedisTemplate(){

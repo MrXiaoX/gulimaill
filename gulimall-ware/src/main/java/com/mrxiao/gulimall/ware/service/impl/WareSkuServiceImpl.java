@@ -11,6 +11,7 @@ import com.mrxiao.gulimall.ware.entity.WareSkuEntity;
 import com.mrxiao.gulimall.ware.feign.ProductFeignService;
 import com.mrxiao.gulimall.ware.service.WareSkuService;
 import com.mrxiao.gulimall.ware.vo.SkuHasStockVo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service("wareSkuService")
 public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> implements WareSkuService {
 
@@ -95,9 +96,10 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             SkuHasStockVo skuHasStockVo = new SkuHasStockVo();
             Long count = baseMapper.getSkuStock(sku);
             skuHasStockVo.setSkuId(sku);
-            skuHasStockVo.setHasStock(count > 0);
+            skuHasStockVo.setHasStock(count ==null?false:count>0);
             return skuHasStockVo;
         }).collect(Collectors.toList());
+        log.info(">>>查询是否库存结果"+collect);
         return collect;
     }
 
