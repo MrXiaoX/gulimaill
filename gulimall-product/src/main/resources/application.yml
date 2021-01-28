@@ -13,8 +13,13 @@ spring:
       secret-key: NcGhIFB2pLsHqCdxpvy5zs02767UYQ
       oss:
         endpoint: oss-cn-shenzhen.aliyuncs.com
+    sentinel:
+      transport:
+        dashboard: http://localhost:8003
+        port: 8719
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+
 
   thymeleaf:
     cache: false
@@ -38,7 +43,6 @@ spring:
         #spring.redis.pool.min-idle=0
         min-idle: 0
 
-
 #ribbon:
 #  ReadTimeout: 3000
 #  ConnectTimeout: 3000
@@ -56,4 +60,8 @@ logging:
   level:
     com.mrxiao.gulimall: debug
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *

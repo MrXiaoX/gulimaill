@@ -1,5 +1,6 @@
 package com.mrxiao.gulimall.product.app;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.mrxiao.common.utils.PageUtils;
 import com.mrxiao.common.utils.R;
 import com.mrxiao.gulimall.product.entity.AttrAttrgroupRelationEntity;
@@ -29,6 +30,7 @@ public class AttrAttrgroupRelationController {
      * 列表
      */
     @RequestMapping("/list")
+    @SentinelResource(value = "byResource", blockHandler = "handlerException")
 //    //@RequiresPermissions("product:attrattrgrouprelation:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);

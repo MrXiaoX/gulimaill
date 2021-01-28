@@ -12,6 +12,13 @@ spring:
     host: 172.0.9.109
     port: 5672
     virtual-host: /
+    publisher-confirms: true #开启发送端确认
+    publisher-returns: true  #开启发送端抵达队列确认
+    template:
+      mandatory: true  #只要抵达队列，以异步发送优先回调我们这个returnConfirm
+    listener:
+      simple:
+        acknowledge-mode: manual #手动ack
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
