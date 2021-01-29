@@ -24,6 +24,11 @@ public class MyRabbitConfig {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+//    public MyRabbitConfig(RabbitTemplate rabbitTemplate) {
+//        this.rabbitTemplate = rabbitTemplate;
+//        initRabbitTemplate();
+//    }
+
     @Bean
     public MessageConverter messageConversionException(){
         return new Jackson2JsonMessageConverter();

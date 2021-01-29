@@ -87,6 +87,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *
  *
  * 4)、自定义缓存原理 CacheAutoConfiguration->  RedisCacheConfiguration ->RedisCacheManager
+ *
+ *
+ * 9.整合Sentinel
+ *   1)、导入依赖spring-cloud-starter-alibaba-sentinel
+ *   2)、下载sentinel控制台
+ *   3)、配置sentinel控制台相关地址
+ *   4)、在控制台调整参数，
+ *   5)、每个微服务引入spring-boot-starter-actuator,配合management.endpoints.web.exposure.include=*
+ *   6)、自定义sentinel流控返回数据
  */
 @SpringBootApplication
 @MapperScan("com.mrxiao.gulimall.product.dao")

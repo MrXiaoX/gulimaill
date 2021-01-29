@@ -60,8 +60,4 @@ logging:
   level:
     com.mrxiao.gulimall: debug
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: *
+
