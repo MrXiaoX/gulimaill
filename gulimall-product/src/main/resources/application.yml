@@ -9,8 +9,8 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
     alicloud:
-      access-key: LTAI4G5NS9WWwfSz6DwKL3fE
-      secret-key: NcGhIFB2pLsHqCdxpvy5zs02767UYQ
+      access-key: qqqLTAI4G5NS9qqqWWwfSz6DwKL3fEqqq
+      secret-key: qqqNcGhIFB2pLsHqCdxpvy5qqqzs02767UYQqqq
       oss:
         endpoint: oss-cn-shenzhen.aliyuncs.com
     sentinel:
